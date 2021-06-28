@@ -8,7 +8,8 @@
     <div class="card mb-3">
         <div class = "card-body">
             <h1>{{$x['title']}}</h1>
-            <p>ini isinya:  {{$x['subjects']}}</p>   
+            <p>ini isinya:  {{$x['subjects']}}</p>
+            <a href="/home/{{$x->id}}/edit" class = "btn btn-primary">Edit</a>   
         </div>
     </div>
     @endforeach
