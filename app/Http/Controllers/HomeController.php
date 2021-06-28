@@ -24,8 +24,8 @@ class HomeController extends Controller
     public function store(Request $request) {
 
         $request->validate([
-            'title' => 'required|max:255|min:5',
-            'subject' => 'required|min:10',
+            'title' => 'required|max:300|min:3',
+            'subject' => 'required|min:3',
         ]);
 
         $article = new Article;
