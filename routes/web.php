@@ -24,3 +24,5 @@ Route::get('/index', 'HomeController@index2');
 Route::get('/cpp', 'HomeController@cpp');
 Route::get('/course', 'HomeController@course');
 Route::post('/home', 'HomeController@store');
+Route::get('/home/{id}/edit', 'HomeController@edit');
+Route::put('/home/{id}', 'HomeController@update');

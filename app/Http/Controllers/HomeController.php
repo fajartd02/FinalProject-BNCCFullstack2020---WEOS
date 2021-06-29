@@ -36,6 +36,21 @@ class HomeController extends Controller
         return redirect('/home');
     }
 
+    public function edit ($id) {
+        $article = Article::find($id);
+        
+        return view('article.edit', compact('article'));
+    }
+
+    public function update(Request $request, $id) {
+        $article = Article::find($id);
+        $article->title = $request->title;
+        $article->subjects = $request->subject;
+        $article->save();
+
+        return redirect('/home');
+    }
+
     public function index2() {
         return view('article.index');
     }
@@ -47,4 +62,6 @@ class HomeController extends Controller
     public function course() {
         return view('article.course');
     }
+
+
 }
