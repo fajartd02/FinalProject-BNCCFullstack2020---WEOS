@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', 'HomeController@index2');
 Route::get('/home', 'HomeController@index');
 Route::get('/home/create', 'HomeController@create');
 Route::get('/home/{slug}', 'HomeController@show');
@@ -26,3 +27,4 @@ Route::get('/course', 'HomeController@course');
 Route::post('/home', 'HomeController@store');
 Route::get('/home/{id}/edit', 'HomeController@edit');
 Route::put('/home/{id}', 'HomeController@update');
+Route::delete('/home/{id}', 'HomeController@destroy');

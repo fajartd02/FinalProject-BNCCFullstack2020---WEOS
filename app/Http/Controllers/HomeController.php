@@ -13,8 +13,9 @@ class HomeController extends Controller
         return view('article.home', compact('articles'));
     }
 
-    public function show($slug){
-        return view('show', compact('slug'));
+    public function show($title){
+        $article = Article::where('title', $title)->first();
+        return view('show', compact('article'));
     }
 
     public function create() {
@@ -28,10 +29,15 @@ class HomeController extends Controller
             'subject' => 'required|min:3',
         ]);
 
-        $article = new Article;
-        $article->title = $request->title;
-        $article->subjects = $request->subject;
-        $article->save();
+        // $article = new Article;
+        // $article->title = $request->title;
+        // $article->subjects = $request->subject;
+        // $article->save();
+
+        Article::create([
+            'title' => $request->title,
+            'subjects' => $request->subject
+        ]);
 
         return redirect('/home');
     }
@@ -47,6 +53,12 @@ class HomeController extends Controller
         $article->title = $request->title;
         $article->subjects = $request->subject;
         $article->save();
+
+        return redirect('/home');
+    }
+
+    public function destroy($id) {
+        Article::find($id)->delete();
 
         return redirect('/home');
     }
