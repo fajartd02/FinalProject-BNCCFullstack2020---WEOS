@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('title')
+Thread Forum
+@endsection
+
+
 @section('content')
     <nav> 
     <a href="/index">Home</a>

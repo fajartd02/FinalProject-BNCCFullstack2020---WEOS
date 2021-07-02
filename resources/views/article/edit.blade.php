@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+Edited Forum
+@endsection
+
 @section('content')
 
 <nav> 
