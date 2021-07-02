@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\str;
 use Illuminate\Http\Request;
 use App\Models\Article;
 
@@ -9,12 +10,15 @@ class HomeController extends Controller
 {
     public function index(){
         
-        $articles = Article::orderBy('id', 'desc')->paginate(5);
+        $articles = Article::orderBy('id', 'desc')->paginate(6);
         return view('article.home', compact('articles'));
     }
 
-    public function show($title){
-        $article = Article::where('title', $title)->first();
+    public function show($slug){
+        $article = Article::where('slug', $slug)->first();
+
+        if($article == null)
+            abort(404);
         return view('show', compact('article'));
     }
 
@@ -27,6 +31,7 @@ class HomeController extends Controller
         $request->validate([
             'title' => 'required|max:300|min:3',
             'subject' => 'required|min:3',
+
         ]);
 
         // $article = new Article;
@@ -36,6 +41,7 @@ class HomeController extends Controller
 
         Article::create([
             'title' => $request->title,
+            'slug' => Str::slug($request->title, '-'),
             'subjects' => $request->subject
         ]);
 
