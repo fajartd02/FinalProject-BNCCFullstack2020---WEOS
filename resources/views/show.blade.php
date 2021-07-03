@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.temp')
 
 @section('title')
 Forum
@@ -10,8 +10,8 @@ Forum
 <p>{{$article->subjects}}</p>
 
 <div class="row mb-1">
-    <a href="/home/{{$article->id}}/edit" class = "col-1 btn btn-info btn-sm">Edit</a>
-    <form action="/home/{{$article->id}}" method = "post" class = "col">
+    <a href="/post/{{$article->id}}/edit" class = "col-1 btn btn-info btn-sm">Edit</a>
+    <form action="/post/{{$article->id}}" method = "post" class = "col">
         @csrf
         @METHOD('DELETE')
 
@@ -19,6 +19,6 @@ Forum
     </form> 
 </div>
 
-<a href = "/home" class="btn btn-sm btn-info"><< </a>
+<a href = "/post" class="btn btn-sm btn-info"><< </a>
 
 @endsection

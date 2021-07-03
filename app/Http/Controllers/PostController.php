@@ -6,12 +6,12 @@ use Illuminate\Support\str;
 use Illuminate\Http\Request;
 use App\Models\Article;
 
-class HomeController extends Controller
+class PostController extends Controller
 {
     public function index(){
         
-        $articles = Article::orderBy('id', 'desc')->paginate(6);
-        return view('article.home', compact('articles'));
+        $articles = Article::orderBy('id', 'desc')->paginate(6); 
+        return view('article.post', compact('articles'));
     }
 
     public function show($slug){
@@ -42,11 +42,16 @@ class HomeController extends Controller
         // $article->subjects = $request->subject;
         // $article->save();
 
-        $imgName = $request->thumbnail->getClientOriginalName()
-                                       . '-'
-                                       . time() . '.' 
-                                       . $request->thumbnail->extension();
-        $request->thumbnail->move(public_path('image'), $imgName);
+
+        $imgName = null;
+
+        if($request->thumbnail) {
+            $imgName = $request->thumbnail->getClientOriginalName()
+            . '-'
+            . time() . '.' 
+            . $request->thumbnail->extension();
+            $request->thumbnail->move(public_path('image'), $imgName);
+        }
 
         Article::create([
             'title' => $request->title,
@@ -55,7 +60,7 @@ class HomeController extends Controller
             'thumbnail' => $imgName
         ]);
 
-        return redirect('/home');
+        return redirect('/post');
     }
 
     public function edit ($id) {
@@ -65,18 +70,37 @@ class HomeController extends Controller
     }
 
     public function update(Request $request, $id) {
+
+        $request->validate([
+            'thumbnail' => 'mimes:jpeg,png,jpg,gif,svg',
+            'title' => 'required|max:300|min:3',
+            'subject' => 'required|min:3',
+
+        ]);
+
+        $imgName = null;
+
+        if($request->thumbnail) {
+            $imgName = $request->thumbnail->getClientOriginalName()
+            . '-'
+            . time() . '.' 
+            . $request->thumbnail->extension();
+            $request->thumbnail->move(public_path('image'), $imgName);
+        }
+
         $article = Article::find($id);
         $article->title = $request->title;
         $article->subjects = $request->subject;
+        $article->thumbnail = $imgName;
         $article->save();
 
-        return redirect('/home');
+        return redirect('/post');
     }
 
     public function destroy($id) {
         Article::find($id)->delete();
 
-        return redirect('/home');
+        return redirect('/post');
     }
 
     public function index2() {
@@ -90,6 +114,4 @@ class HomeController extends Controller
     public function course() {
         return view('article.course');
     }
-
-
 }

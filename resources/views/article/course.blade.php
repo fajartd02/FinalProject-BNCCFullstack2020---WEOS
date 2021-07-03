@@ -54,7 +54,7 @@
         <a class="nav-brand" href="/index"><img id="logo" src="{{ asset('asset/img/logo.png') }}"></a>
         
        <input id="search" class="nav-item" type="search" placeholder="Search">
-       <a href="/home" style = "margin-left : 50px; position:relative; bottom: 30px;">FORUM</a>
+       <a href="/post" style = "margin-left : 50px; position:relative; bottom: 30px;">FORUM</a>
        <ul>
             <li>
                 <a id="browse-btn" class="nav-item icon-btn" href="course.html"><i class="fas fa-compass"></i></a>

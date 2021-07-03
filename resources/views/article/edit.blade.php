@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.temp')
 
 @section('title')
 Edited Forum
@@ -7,7 +7,7 @@ Edited Forum
 @section('content')
 
 <nav> 
-<a href="/home">Back</a>
+<a href="/post">Back</a>
 </nav>
 <h1>Edit Forum</h1>
 @if ($errors->any())
@@ -19,7 +19,7 @@ Edited Forum
         </ul>
     </div>
 @endif
-<form action="/home/{{$article->id}}" method = "POST">
+<form action="/post/{{$article->id}}" method = "POST" enctype="multipart/form-data">
     @csrf
     @METHOD('PUT')
 
@@ -32,7 +32,12 @@ Edited Forum
         <label for="subject">Subject</label>
         <textarea name="subject" id="subject" class="form-control" rows = "3">{{ old('subject') ? old('subject') : $article->subjects }}</textarea>
     </div>
-    <button type = "submimt" class = "btn btn-primary">Submit</button>
+
+    <div class="form-group">
+        <label for="thumbnail">Upload Gambar</label> <br>
+        <input type="file" class ="form-control-file" id="thumbnail" name="thumbnail">
+    </div> <br>
+    <button type = "submit" class = "btn btn-primary">Submit</button>
 
 
 </form>

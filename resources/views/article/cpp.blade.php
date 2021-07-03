@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar">
         <a class="nav-brand" href="/index"><img id="logo" src="{{ asset('asset/img/logo.png') }}"></a>
-        <a href="/home" style = "margin-left : 50px; position:relative; bottom: 30px;">FORUM</a>
+        <a href="/post" style = "margin-left : 50px; position:relative; bottom: 30px;">FORUM</a>
         <input id="search" class="nav-item" type="search" placeholder="Search">
         <ul>
             <li>

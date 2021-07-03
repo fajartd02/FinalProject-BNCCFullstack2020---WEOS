@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.temp')
 
 @section('title')
 New Forum
@@ -7,7 +7,7 @@ New Forum
 @section('content')
 
 <nav> 
-<a href="/home">Back</a>
+<a href="/post">Back</a>
 </nav>
 <h1>New Forum</h1>
 @if ($errors->any())
@@ -19,7 +19,7 @@ New Forum
         </ul>
     </div>
 @endif
-<form action="/home" method = "POST" enctype="multipart/form-data">
+<form action="/post" method = "POST" enctype="multipart/form-data">
     @csrf
 
     <div class="form-group">
@@ -37,7 +37,7 @@ New Forum
         <input type="file" class ="form-control-file" id="thumbnail" name="thumbnail">
     </div> <br>
 
-    <button type = "submimt" class = "btn btn-primary">Submit</button>
+    <button type = "submit" class = "btn btn-primary">Submit</button>
 
 
 </form>

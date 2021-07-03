@@ -17,14 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', 'HomeController@index2');
-Route::get('/home', 'HomeController@index');
-Route::get('/home/create', 'HomeController@create');
-Route::get('/home/{slug}', 'HomeController@show');
-Route::get('/index', 'HomeController@index2');
-Route::get('/cpp', 'HomeController@cpp');
-Route::get('/course', 'HomeController@course');
-Route::post('/home', 'HomeController@store');
-Route::get('/home/{id}/edit', 'HomeController@edit');
-Route::put('/home/{id}', 'HomeController@update');
-Route::delete('/home/{id}', 'HomeController@destroy');
+Route::get('/', 'PostController@index2');
+Route::get('/post', 'PostController@index');
+Route::get('/post/create', 'PostController@create');
+Route::get('/post/{slug}', 'PostController@show');
+Route::get('/index', 'PostController@index2');
+Route::get('/cpp', 'PostController@cpp');
+Route::get('/course', 'PostController@course');
+Route::post('/post', 'PostController@store');
+Route::get('/post/{id}/edit', 'PostController@edit');
+Route::put('/post/{id}', 'PostController@update');
+Route::delete('/post/{id}', 'PostController@destroy');

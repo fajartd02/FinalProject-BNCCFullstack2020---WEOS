@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.temp')
 
 @section('title')
 Thread Forum
@@ -10,20 +10,20 @@ Thread Forum
     <a href="/index">Home</a>
     </nav>
     <h1>Ini nyobain template</h1>
-    <a href ="/home/create" class="btn btn-primary">Create New Forum</a> <br><br>
+    <a href ="/post/create" class="btn btn-primary">Create New Forum</a> <br><br>
 
     @foreach ($articles->chunk(3) as $xChunk)
     <div class="row">
         @foreach($xChunk as $x)
         <div class="col card mb-3">
             @if($x->thumbnail)
-                <img class ="card-img-top" src="/image/{{$x->thumbnail}}">
+                <img class ="card-img-top" src="/image/{{$x->thumbnail}}" >
             @endif
             <!-- <img class ="card-img-top" src="/image/{{$x->thumbnail}}"> -->
             <div class = "card-body">
                 <h1>{{ucfirst($x->title)}}</h1>
                 <p>ini isinya:  {{$x['subjects']}}</p>
-                <a href="/home/{{$x->slug}}" class = "btn btn-info btn-sm stretched-link">Read</a>   
+                <a href="/post/{{$x->slug}}" class = "btn btn-info btn-sm stretched-link">Read</a>   
             </div>
         </div>
         @endforeach
