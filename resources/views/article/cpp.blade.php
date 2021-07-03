@@ -6,6 +6,7 @@
     <link rel="icon" href="{{ asset('asset/img/logo.png') }}" type="image/png">
     <link rel="stylesheet" href="{{ asset('asset/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/course.css') }}">
 </head>
 
 <body>

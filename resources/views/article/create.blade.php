@@ -19,7 +19,7 @@ New Forum
         </ul>
     </div>
 @endif
-<form action="/home" method = "POST">
+<form action="/home" method = "POST" enctype="multipart/form-data">
     @csrf
 
     <div class="form-group">
@@ -31,6 +31,12 @@ New Forum
         <label for="subject">Subject</label>
         <textarea name="subject" id="subject" class="form-control" rows = "3">{{ old('subject') }}</textarea>
     </div>
+
+    <div class="form-group">
+        <label for="thumbnail">Upload Gambar</label> <br>
+        <input type="file" class ="form-control-file" id="thumbnail" name="thumbnail">
+    </div> <br>
+
     <button type = "submimt" class = "btn btn-primary">Submit</button>
 
 

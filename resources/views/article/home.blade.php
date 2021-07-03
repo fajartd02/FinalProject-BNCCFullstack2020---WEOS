@@ -16,6 +16,10 @@ Thread Forum
     <div class="row">
         @foreach($xChunk as $x)
         <div class="col card mb-3">
+            @if($x->thumbnail)
+                <img class ="card-img-top" src="/image/{{$x->thumbnail}}">
+            @endif
+            <!-- <img class ="card-img-top" src="/image/{{$x->thumbnail}}"> -->
             <div class = "card-body">
                 <h1>{{ucfirst($x->title)}}</h1>
                 <p>ini isinya:  {{$x['subjects']}}</p>

@@ -28,7 +28,10 @@ class HomeController extends Controller
 
     public function store(Request $request) {
 
+        // dd($request->thumbnail);
+
         $request->validate([
+            'thumbnail' => 'mimes:jpeg,png,jpg,gif,svg',
             'title' => 'required|max:300|min:3',
             'subject' => 'required|min:3',
 
@@ -39,10 +42,17 @@ class HomeController extends Controller
         // $article->subjects = $request->subject;
         // $article->save();
 
+        $imgName = $request->thumbnail->getClientOriginalName()
+                                       . '-'
+                                       . time() . '.' 
+                                       . $request->thumbnail->extension();
+        $request->thumbnail->move(public_path('image'), $imgName);
+
         Article::create([
             'title' => $request->title,
             'slug' => Str::slug($request->title, '-'),
-            'subjects' => $request->subject
+            'subjects' => $request->subject,
+            'thumbnail' => $imgName
         ]);
 
         return redirect('/home');
