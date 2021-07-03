@@ -4,7 +4,7 @@
 New Forum
 @endsection
 
-@section('content')
+@section('contentTemp')
 
 <nav> 
 <a href="/post">Back</a>

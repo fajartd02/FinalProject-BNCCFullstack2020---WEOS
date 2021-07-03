@@ -4,12 +4,16 @@
 Thread Forum
 @endsection
 
+@extends('layouts.app')
 
 @section('content')
+@endsection
+
+@section('contentTemp')
     <nav> 
     <a href="/index">Home</a>
     </nav>
-    <h1>Ini nyobain template</h1>
+    <h1>Forum Discussion</h1>
     <a href ="/post/create" class="btn btn-primary">Create New Forum</a> <br><br>
 
     @foreach ($articles->chunk(3) as $xChunk)

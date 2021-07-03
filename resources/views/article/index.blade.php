@@ -18,25 +18,10 @@
                 <a id="browse-btn" class="nav-item icon-btn" href="/course"><i class="fas fa-compass"></i></a>
             </li>
             <li>
-                <a id="user-btn" class="nav-item icon-btn" href="#"><i class="fas fa-user-circle"></i></a>
+                <a id="user-btn" class="nav-item icon-btn" href="/login"><i class="fas fa-user-circle"></i></a>
             </li>
         </ul>
     </nav>
-
-    <div class="popup">
-        <div class="popup-header">
-            <a id="fullname">Kamaboko Gonpachiro</a>
-            <a id="prof-btn" href="#">Go to profile</a>
-        </div>
-
-        <hr class="separator">
-
-        <div class="popup-body">
-            <a class="details-btn" href="#"><i class="fas fa-cog"></i> Settings</a>
-            <a class="details-btn" href="#"><i class="fas fa-question-circle"></i> Help</a>
-            <a class="details-btn" href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a>
-        </div>
-    </div>
 
     <h1>Popular Courses !!</h1>
 

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', 'PostController@index2');
 Route::get('/post', 'PostController@index');
+Route::get('/', 'PostController@index');
 Route::get('/post/create', 'PostController@create');
 Route::get('/post/{slug}', 'PostController@show');
 Route::get('/index', 'PostController@index2');
@@ -28,3 +29,6 @@ Route::post('/post', 'PostController@store');
 Route::get('/post/{id}/edit', 'PostController@edit');
 Route::put('/post/{id}', 'PostController@update');
 Route::delete('/post/{id}', 'PostController@destroy');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
