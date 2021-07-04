@@ -29,6 +29,7 @@ Route::post('/post', 'PostController@store');
 Route::get('/post/{id}/edit', 'PostController@edit');
 Route::put('/post/{id}', 'PostController@update');
 Route::delete('/post/{id}', 'PostController@destroy');
+Route::put('/post/{id}/thread', 'PostController@validation');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

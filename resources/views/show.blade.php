@@ -30,6 +30,16 @@ Forum
             @METHOD('DELETE')
 
             <button class="btn btn-sm btn-danger">Delete</button>
+        </form>         
+        <form action="/post/{{$article->id}}/thread" method = "post" class = "col-1 btn btn-info btn-sm">
+            @csrf
+            @METHOD('PUT')
+            @if($article->validation == 0) 
+                <button>Close Thread</button>
+            @else 
+                <button>Open Thread</button>
+            @endif
+            
         </form> 
         </div> 
     @endif
@@ -62,18 +72,23 @@ Forum
 
 <!-- Isi Comments -->
 <hr>
-<form action="/post/{{$article->id}}/comments" method = "POST">
-    @csrf      
+@if (Auth::check())
+    @if($article->validation == 0) 
+        <form action="/post/{{$article->id}}/comments" method = "POST">
+        @csrf      
 
-    <div class="form-group">
-        <label for="subject">Comments</label>
-        <textarea name="subject" id="subject" class="form-control" rows = "3">{{ old('subject') }}</textarea>
-    </div>
+        <div class="form-group">
+            <label for="subject">Comments</label>
+            <textarea name="subject" id="subject" class="form-control" rows = "3">{{ old('subject') }}</textarea>
+        </div>
 
-    <button type = "submit" class = "btn btn-primary">Submit</button>
-</form>
+        <button type = "submit" class = "btn btn-primary">Submit</button>
+        </form>
 
-
-<a href = "/post" class="btn btn-sm btn-info"><< </a>
+        <a href = "/post" class="btn btn-sm btn-info"><< </a>
+    @else
+        <h3>The Thread Has Been Closed By Host</h3>
+    @endif
+@endif
 
 @endsection

@@ -20,6 +20,9 @@ Thread Forum
     <div class="row">
         @foreach($xChunk as $x)
         <div class="col card mb-3">
+            @if($x->validation == 1) 
+                <h4>CLOSE THREAD</h4>
+            @endif
             @if($x->thumbnail)
                 <img class ="card-img-top" src="/image/{{$x->thumbnail}}" >
             @endif

@@ -73,7 +73,8 @@ class PostController extends Controller
             'title' => $request->title,
             'slug' => Str::slug($request->title, '-'),
             'subjects' => $request->subject,
-            'thumbnail' => $imgName
+            'thumbnail' => $imgName,
+            'validation' => 0
         ]);
 
         // Auth::user()->articles()->create([
@@ -136,5 +137,18 @@ class PostController extends Controller
     
     public function course() {
         return view('article.course');
+    }
+
+    public function validation ($id) {
+        $article = Article::find($id);
+
+        if($article->validation == 0) {
+            $article->validation = 1;
+        } else{
+            $article->validation = 0;
+        }
+        $article->save();
+
+        return redirect('/post');
     }
 }
