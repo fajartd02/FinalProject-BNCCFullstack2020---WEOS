@@ -25,6 +25,7 @@ Thread Forum
             @endif
             <!-- <img class ="card-img-top" src="/image/{{$x->thumbnail}}"> -->
             <div class = "card-body">
+                <h6>From : {{$x->user->name}}</h3>
                 <h1>{{ucfirst($x->title)}}</h1>
                 <p>ini isinya:  {{$x['subjects']}}</p>
                 <a href="/post/{{$x->slug}}" class = "btn btn-info btn-sm stretched-link">Read</a>   

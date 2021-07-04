@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\str;
 use Illuminate\Http\Request;
 use App\Models\Article;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -65,12 +66,22 @@ class PostController extends Controller
             $request->thumbnail->move(public_path('image'), $imgName);
         }
 
+        
+        //cara pertama
         Article::create([
+            'user_id' => Auth::user()->id,
             'title' => $request->title,
             'slug' => Str::slug($request->title, '-'),
             'subjects' => $request->subject,
             'thumbnail' => $imgName
         ]);
+
+        // Auth::user()->articles()->create([
+        //     'title' => $request->title,
+        //     'slug' => Str::slug($request->title, '-'),
+        //     'subjects' => $request->subject,
+        //     'thumbnail' => $imgName
+        // ]);
 
         return redirect('/post');
     }

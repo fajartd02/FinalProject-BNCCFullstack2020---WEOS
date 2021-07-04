@@ -4,8 +4,14 @@
 Forum
 @endsection
 
+@extends('layouts.app')
+
+@section('content')
+@endsection
+
 @section('contentTemp')
 
+<h4>Thread From : {{$article->user->name}}</h4>
 <h1>{{$article->title}}</h1>
 <div class="col card mb-3">
             @if($article->thumbnail)

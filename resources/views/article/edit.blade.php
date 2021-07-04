@@ -6,6 +6,11 @@ Edited Forum
 
 @section('contentTemp')
 
+@extends('layouts.app')
+
+@section('content')
+@endsection
+
 <nav> 
 <a href="/post">Back</a>
 </nav>
@@ -38,7 +43,7 @@ Edited Forum
         <input type="file" class ="form-control-file" id="thumbnail" name="thumbnail">
     </div> <br>
     <button type = "submit" class = "btn btn-primary">Submit</button>
-
-
+    <br>
+    <a href = "/post/{{$article->slug}}" class="btn btn-sm btn-info"><< </a>
 </form>
 @endsection
