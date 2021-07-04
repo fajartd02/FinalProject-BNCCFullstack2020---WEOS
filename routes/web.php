@@ -36,6 +36,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::put('/comments/{id}', 'CommentController@update');
 // Route::get('/comments/{id}', 'CommentController@update');
 Route::get('/comments/{id}/edit', 'CommentController@edit');
-Route::delete('/comments/{id}', 'PostController@destroy');
+Route::delete('/comments/{id}', 'CommentController@destroy');
 
 Route::resource('post.comments', 'CommentController')->middleware('auth');
