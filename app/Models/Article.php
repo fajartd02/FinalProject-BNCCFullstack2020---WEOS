@@ -8,7 +8,13 @@ class Article extends Model
 {
     protected $guarded = ['id'];
 
+    public function comments() {
+        return $this->hasMany('App\Models\ArticleComment');
+    }
+
     public function user() {
         return $this->belongsTo('App\User');
     }
+
+    
 }

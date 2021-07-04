@@ -35,6 +35,33 @@ Forum
     @endif
 @endif
 
+<!-- Komentar -->
+
+<h3>Comments</h3>
+
+@foreach ($article->comments as $comment )
+    <div class="row">
+        <div class="col card mb-3">
+            <p>{{$comment->subject}}</p>
+            <span>- {{$comment->user->name}} -</span>
+        </div>
+    </div>
+@endforeach
+
+<!-- Isi Comments -->
+<hr>
+<form action="/post/{{$article->id}}/comments" method = "POST">
+    @csrf      
+
+    <div class="form-group">
+        <label for="subject">Comments</label>
+        <textarea name="subject" id="subject" class="form-control" rows = "3">{{ old('subject') }}</textarea>
+    </div>
+
+    <button type = "submit" class = "btn btn-primary">Submit</button>
+</form>
+
+
 <a href = "/post" class="btn btn-sm btn-info"><< </a>
 
 @endsection
