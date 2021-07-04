@@ -4,9 +4,14 @@
 Forum
 @endsection
 
-@section('content')
+@section('contentTemp')
 
 <h1>{{$article->title}}</h1>
+<div class="col card mb-3">
+            @if($article->thumbnail)
+                <img class ="card-img-top" src="/image/{{$article->thumbnail}}" >
+            @endif
+</div>
 <p>{{$article->subjects}}</p>
 
 <div class="row mb-1">

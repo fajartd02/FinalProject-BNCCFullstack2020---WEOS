@@ -8,6 +8,18 @@ use App\Models\Article;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index']);
+    }
+
+
+    // public function loginzzz() {
+
+    //     return view('auth.login');
+    // }
+
     public function index(){
         
         $articles = Article::orderBy('id', 'desc')->paginate(6); 
