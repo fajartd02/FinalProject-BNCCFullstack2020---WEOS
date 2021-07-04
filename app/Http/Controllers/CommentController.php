@@ -105,7 +105,7 @@ class CommentController extends Controller
         ]);
 
         
-        return redirect('/comments/' . $comment->article->slug);
+        return redirect('post/' . $comment->article->slug);
         
     }
 
@@ -117,6 +117,10 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+    //    masih error
+        $comment = ArticleComment::find($id);
+        $comment->delete();
+
+        return redirect('post/' . $comment->article->slug);
     }
 }

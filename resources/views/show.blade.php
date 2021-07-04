@@ -48,11 +48,11 @@ Forum
         @if (Auth::check())
             @if (Auth::user()->id == $comment->user_id)
                 <a href="/comments/{{$comment->id}}/edit" class = "col-1 btn btn-info btn-sm">Edit</a>
-                <!-- <form action="/post/{{$article->id}}" method = "post" class = "col">
+                <form action="/comments/{{$comment->id}}" method = "post" class = "col-1">
                     @csrf
                     @METHOD('DELETE')
                     <button class="btn btn-sm btn-danger">Delete</button>
-                </form>  -->
+                </form> 
             @endif
         @endif
 
