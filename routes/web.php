@@ -33,6 +33,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('post.comments', 'CommentController');
+Route::put('/comments/{id}', 'CommentController@update');
+// Route::get('/comments/{id}', 'CommentController@update');
+Route::get('/comments/{id}/edit', 'CommentController@edit');
 
-
+// Route::resource('article.comments', 'CommentController')->middleware('auth');

@@ -44,8 +44,20 @@ Forum
         <div class="col card mb-3">
             <p>{{$comment->subject}}</p>
             <span>- {{$comment->user->name}} -</span>
-        </div>
+        </div> <br>
+        @if (Auth::check())
+            @if (Auth::user()->id == $comment->user_id)
+                <a href="/comments/{{$comment->id}}/edit" class = "col-1 btn btn-info btn-sm">Edit</a>
+                <!-- <form action="/post/{{$article->id}}" method = "post" class = "col">
+                    @csrf
+                    @METHOD('DELETE')
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                </form>  -->
+            @endif
+        @endif
+
     </div>
+
 @endforeach
 
 <!-- Isi Comments -->

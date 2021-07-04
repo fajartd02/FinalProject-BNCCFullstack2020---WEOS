@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Article;
+use App\Models\ArticleComment;
 use Illuminate\Http\Request;
 use Illuminate\Support\str;
 use Illuminate\Support\Facades\Auth;
@@ -74,7 +75,10 @@ class CommentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comment = ArticleComment::find($id);
+        // $article = Article::find($id);
+
+        return view('article.comment-edit', compact('comment'));
     }
 
     /**
@@ -86,7 +90,23 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'subject' => 'required|min:1'
+        ]);
+
+        $comment = ArticleComment::find($id);
+
+        if ($comment->id != Auth::user()->id) {
+            abort(403);
+        }
+
+        $comment->update([
+            'subject' => $request->subject
+        ]);
+
+        
+        return redirect('/comments/' . $comment->article->slug);
+        
     }
 
     /**
